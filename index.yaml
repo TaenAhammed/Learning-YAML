@@ -1,0 +1,62 @@
+# YAML: YAML Ain't Markup Language -> It's a comment
+
+person:   # Person Object
+  fullName: "Taen Ahammed"
+  occupation: 'Programmer'
+  age: 20
+  cgpa: 3.5
+  fav_num: 1e+10
+  male: true
+  birthDay: 1998-12-12 17:30:45     # ISO 8601 -> It's a date & time standard format
+  flaws: null
+
+  # Forcing data type to convert into another data type (type conversion)
+  weight: !!float 45    # 45.0
+  height: !!str 5.5     # "5.5"
+
+# List of information
+  hobbies:
+    - Programming
+    - Walking
+    - Cycling
+  
+  books: ["Programming 101", "Software Engineering", "TDD"]
+
+  # hobbies and books are equivalent, both are list
+
+  # List of objects
+  friends:
+    - name: "Zaman"               # 1
+      age: 22
+    - {name: 'Zaman', age: 22}    # 2
+    -                             # 3  
+      name: 'Zaman'
+      age: 22
+
+    # All three of these doing the same thing. -> Storing an object as a list item.
+
+  description: >    # To render as a single line. (without extra spaces, indentations and newlines)
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+    A ab consequuntur dignissimos et beatae quod in quasi. Maiores, 
+    beatae natus voluptates id perferendis error officia voluptas magnam optio provident architecto?
+
+  emailSignature: |   # To render as a formatted value (with extra spaces, indentations and newlines)
+    Taen
+      Microservice practitioner, Solution Architect & DevOps
+      taenahammed7@gmail.com
+
+  
+  # Storing & Encoring value
+  name: &name 'Taen'
+  id: *name             # id: 'Taen'
+
+  # Storing & Encoring entire key value pair
+  base: &base
+    var1: value1
+    var2: value2
+
+  foo:
+    <<: *base       # var1: value1
+                    # var2: value2
+    var3: value3
+    var4: value4
